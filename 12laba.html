@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Лаба12</title>
+</head>
+<body>
+
+<p id="result">Получаем:</p>
+<a>Введите значение X</a>
+<input type="text" placeholder="Значение Х" id="pole">
+<input type="button" value="Ввод" id="button">
+
+<script>
+function opera(){
+let x = Number(document.getElementById('pole').value);
+document.getElementById('result').innerText = `Получаем: ${3*x+5}`;
+}
+
+function YaBrowser(){
+let x = Number(document.getElementById('pole').value);
+document.getElementById('result').innerText = `Получаем: ${x+3}`;
+}
+
+function chrome(){
+let x = Number(document.getElementById('pole').value);
+document.getElementById('result').innerText = `Получаем: ${x/3+x/5}`;
+}
+
+(function search(){
+let browStr = navigator.userAgent;
+let regexp = /(OPR\/(\d+\.){3}\d)|(YaBrowser)|(Chrome\/67.(\d+\.){2}\d)/;
+let browser = browStr.match(regexp);
+console.log(browser);
+let a = document.getElementsByTagName('a')[0];
+
+if (browser[0] == 'OPR/105.0.0.0'){
+a.innerText = 'Вы находитесь на сайте: Opera, и поэтому будет вычисляться функция: 3*x+5';
+document.getElementById('button').setAttribute('onclick', 'opera()');
+}
+else if (browser[0] == 'YaBrowser'){
+a.innerText = 'Вы находитесь на сайте: Yandex, и поэтому будет вычисляться функция: x+3';
+document.getElementById('button').setAttribute('onclick', 'YaBrowser()');
+}
+else if (browser[0] == 'Chrome/67.0.3396.8'){
+a.innerText = 'Вы находитесь на сайте: Chrome, и поэтому будет вычисляться функция: x/3+x/5';
+document.getElementById('button').setAttribute('onclick', 'chrome()');
+}
+else{
+a.innerText = 'Нет такого браузера!';
+}
+})()
+</script>
+</body>
+</html>
