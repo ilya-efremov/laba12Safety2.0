@@ -29,7 +29,6 @@ document.getElementById('result').innerText = `Получаем: ${x/3+x/5}`;
 let browStr = navigator.userAgent;
 let regexp = /(OPR\/(\d+\.){3}\d)|(YaBrowser)|(Chrome\/67.(\d+\.){2}\d)/;
 let browser = browStr.match(regexp);
-console.log(browser);
 let a = document.getElementsByTagName('a')[0];
 
 if (browser[0] == 'OPR/105.0.0.0'){
